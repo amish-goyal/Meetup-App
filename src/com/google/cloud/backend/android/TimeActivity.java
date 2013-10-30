@@ -2,6 +2,7 @@ package com.google.cloud.backend.android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -45,6 +46,9 @@ public class TimeActivity extends Activity {
 					LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT);
 			Button doneBtn = new Button(this);
+			doneBtn.setTextColor(Color.parseColor("#FFFFFF"));
+			doneBtn.setBackgroundColor(R.drawable.button1);
+			doneBtn.setBackgroundResource(R.drawable.back);
 			rlpBtn.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
 			doneBtn.setText(R.string.done);
 			doneBtn.setOnClickListener(new OnClickListener() {
@@ -74,6 +78,8 @@ public class TimeActivity extends Activity {
 					LayoutParams.WRAP_CONTENT);
 			Button nextBtn = new Button(this);
 			rlpBtn.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+			//nextBtn.setBackgroundResource(R.drawable.back);
+			nextBtn.setTextColor(Color.WHITE);
 			nextBtn.setText(R.string.next);
 			nextBtn.setOnClickListener(new OnClickListener() {
 				

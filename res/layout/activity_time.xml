@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
     tools:context=".ClockActivity" >
 
     <TextView
@@ -17,6 +18,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/groupName"
         android:layout_marginTop="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:text="@string/timegroup" />
 
     <TimePicker
@@ -35,6 +40,7 @@
         android:layout_below="@+id/textTimeGroup"
         android:layout_marginTop="29dp"
         android:ems="10"
+        android:textColor="#FFFFFF"
         android:hint="@string/group_name" />
 
 </RelativeLayout>

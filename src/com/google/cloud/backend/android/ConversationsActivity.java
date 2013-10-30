@@ -10,6 +10,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -29,42 +30,42 @@ public class ConversationsActivity extends CloudBackendActivity {
 
 		// Subscribe to messages
 		CloudCallbackHandler<List<CloudEntity>> handler = new CloudCallbackHandler<List<CloudEntity>>() {
-			@Override
-			public void onComplete(List<CloudEntity> messages) {
-				for (CloudEntity ce : messages) {
-					Toast.makeText(getApplicationContext(), (CharSequence) ce.get("contacts"), Toast.LENGTH_LONG).show();
-
-					Intent activityChangeIntent = new Intent(ConversationsActivity.this, MessageActivity.class);
-					activityChangeIntent.putExtras(getIntent());//passes location, time, groupname to next intent
-					if(ce.get("eventID") != null) {
-						activityChangeIntent.putExtra("contacts", (String)ce.get("contacts"));
-						activityChangeIntent.putExtra("location", (String)ce.get("location"));
-						activityChangeIntent.putExtra("time", (String)ce.get("time"));
-						activityChangeIntent.putExtra("user", (String)ce.get("user"));
-						activityChangeIntent.putExtra("eventID", (String)ce.get("eventID"));
-					}
+		      @Override
+		      public void onComplete(List<CloudEntity> messages) {
+		        for (CloudEntity ce : messages) {
+		          Toast.makeText(getApplicationContext(), (CharSequence) ce.get("contacts"), Toast.LENGTH_LONG).show();
+		          
+		          Intent activityChangeIntent = new Intent(ConversationsActivity.this, MessageActivity.class);
+		          activityChangeIntent.putExtras(getIntent());//passes location, time, groupname to next intent
+					activityChangeIntent.putExtra("contacts", (String)ce.get("contacts"));
+					activityChangeIntent.putExtra("location", (String)ce.get("location"));
+					activityChangeIntent.putExtra("time", (String)ce.get("time"));
+					activityChangeIntent.putExtra("user", (String)ce.get("user"));
+					activityChangeIntent.putExtra("eventID", (String)ce.get("eventID"));
+					activityChangeIntent.putExtra("newEvent", true);
 					startActivity(activityChangeIntent);
-				}
-			}
-		};
+		          
+		        }
+		      }
+		    };
 
+		    
 
-
-
-		// receive all posts that includes "#dog" or "#cat" hashtags
-		getCloudBackend().subscribeToCloudMessage(getUsername(), handler, 50);
-
-
+		    
+		    // receive all posts that includes "#dog" or "#cat" hashtags
+		    getCloudBackend().subscribeToCloudMessage(getUsername(), handler, 50);
+		
+		
 		try {
 			AssetManager as = this.getAssets();
 			InputStream is = as.open("conversations.txt");
 			Scanner scan = new Scanner(is);
 			//accessing relative layout defined in xml
 			RelativeLayout rl = (RelativeLayout) findViewById(R.id.conversationLayout);
-
+			
 			ImageButton button = (ImageButton) findViewById(R.id.btnAdd);
 			button.setOnClickListener( new OnClickListener() {
-
+				
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(ConversationsActivity.this, LocationActivity.class);
@@ -79,7 +80,9 @@ public class ConversationsActivity extends CloudBackendActivity {
 				TextView t = new TextView(this);
 				final String groupName = scan.nextLine();
 				t.setText(groupName);
+				t.setTextColor(Color.WHITE);
 				t.setBackgroundResource(R.drawable.back);
+				t.setBackgroundColor(R.drawable.button1);
 				t.setClickable(true);
 				t.setId(4000 + i);
 				t.setOnClickListener(new OnClickListener() {	
@@ -114,16 +117,16 @@ public class ConversationsActivity extends CloudBackendActivity {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private String getUsername(){
 		AccountManager manager = AccountManager.get(this); 
-		Account[] accounts = manager.getAccountsByType("com.google"); 
-		List<String> possibleEmails = new LinkedList<String>();
-
-		for (Account account : accounts) {
-			possibleEmails.add(account.name);
-		}
-		return possibleEmails.get(0);
+	    Account[] accounts = manager.getAccountsByType("com.google"); 
+	    List<String> possibleEmails = new LinkedList<String>();
+	    
+	    for (Account account : accounts) {
+	        possibleEmails.add(account.name);
+	      }
+	    return possibleEmails.get(0);
 	}
 
 	@Override

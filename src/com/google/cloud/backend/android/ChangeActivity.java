@@ -4,7 +4,6 @@ package com.google.cloud.backend.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,11 +16,6 @@ public class ChangeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_change);
 		
-		if(getIntent().hasExtra("changeRequest")) {
-			Log.d("location", getIntent().getStringExtra("location"));
-			Log.d("time", getIntent().getStringExtra("time"));
-			Log.d("groupName", getIntent().getStringExtra("groupName"));
-		}
 		Button locBtn = (Button) findViewById(R.id.locationBtn);
 		Intent intent = getIntent();
 		locBtn.setText(intent.getStringExtra("location"));//change this to name of location for event
@@ -35,7 +29,7 @@ public class ChangeActivity extends Activity {
 		});
 		
 		Button timeBtn = (Button) findViewById(R.id.timeBtn);
-		final String sTime = convertTime(intent.getStringExtra("time"));
+		final String sTime = convertTime(intent);
 		timeBtn.setText(sTime);//change this to the time of the event
 		timeBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -76,10 +70,10 @@ public class ChangeActivity extends Activity {
 		return true;
 	}
 
-	public static String convertTime(String time) {
-		String[] t = time.split(":");
-		int hour = Integer.parseInt(t[0]);
-		int minute = Integer.parseInt(t[1]);
+	public static String convertTime(Intent intent) {
+		String[] time = intent.getStringExtra("time").split(":");
+		int hour = Integer.parseInt(time[0]);
+		int minute = Integer.parseInt(time[1]);
 		String standardTime = "";
 		String min = "";
 		if(minute < 10) {
