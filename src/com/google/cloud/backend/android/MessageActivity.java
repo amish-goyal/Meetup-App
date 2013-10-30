@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -43,11 +44,15 @@ public class MessageActivity extends CloudBackendActivity {
 		messageHist = (RelativeLayout) findViewById(R.id.rlpMsgHist);
 
 		setTitle(getIntent().getStringExtra("groupName"));
-		if(!locTimeList.contains(getIntent().getStringExtra("location")+"-"+
-				getIntent().getStringExtra("time"))) {
-			locTimeList.add(getIntent().getStringExtra("location")+"-"+
-					getIntent().getStringExtra("time"));
+		String s = getIntent().getStringExtra("location")+"-"+
+				ChangeActivity.convertTime(getIntent().getStringExtra("time"));
+		
+		if(!locTimeList.contains(s)) {
+			locTimeList.add(s);
 		}
+		
+		final EditText et = (EditText) findViewById(R.id.reason);
+		et.setEnabled(false);
 		//		//-----------------------------------------------------------------------------------------------------
 		//		//populate this try/catch with the meeting history
 		//		/* try {
@@ -119,6 +124,7 @@ public class MessageActivity extends CloudBackendActivity {
 					String eventID = prev.getStringExtra("eventID");
 					String group = prev.getStringExtra("contacts");
 					locationDecision(eventID, user, group, location, time, "no");
+					et.setClickable(true);
 				}
 			}
 		});
