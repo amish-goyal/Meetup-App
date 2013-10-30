@@ -11,8 +11,10 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,9 +51,16 @@ public class LocationActivity extends CloudBackendActivity {
 			rlpT.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 			
 			TextView tv = new TextView(this);
+			//tv.setBackgroundResource(R.drawable.back);
+			tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+			tv.setTextColor(Color.parseColor("#FFFFFF"));
 			tv.setText("Please choose a location below:");
+			
 			if(getIntent().hasExtra("location")) {
 				tv.setText("Previous location was: " + getIntent().getStringExtra("location"));
+				tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+				tv.setTextColor(Color.parseColor("#FFFFFF"));
+				
 			}
 			tv.setId(2000);
 			tv.setLayoutParams(rlpT);
@@ -66,6 +75,9 @@ public class LocationActivity extends CloudBackendActivity {
 		        final String name = str[0];
 		        String avail = str[1];
 		        button.setText(name);
+		        button.setTextColor(Color.parseColor("#FFFFFF"));		        
+		        button.setBackgroundResource(R.drawable.back);
+		        button.setBackgroundColor(R.drawable.background);
 		        button.setId(1000 + i);
 		        button.setOnClickListener(new OnClickListener() {	
 					@Override
