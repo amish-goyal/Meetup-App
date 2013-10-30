@@ -21,5 +21,6 @@
     <string name="title_activity_location">Locations</string>
     <string name="title_activity_contacts">Select Contacts</string>
     <string name="next">Next</string>
+    <string name="noReason">Reason for No?</string>
 
 </resources>

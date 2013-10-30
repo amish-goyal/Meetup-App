@@ -52,8 +52,8 @@ public class LocationActivity extends CloudBackendActivity {
 			
 			TextView tv = new TextView(this);
 			//tv.setBackgroundResource(R.drawable.back);
-			tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 			tv.setTextColor(Color.parseColor("#FFFFFF"));
+			tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 			tv.setText("Please choose a location below:");
 			
 			if(getIntent().hasExtra("location")) {
@@ -75,6 +75,7 @@ public class LocationActivity extends CloudBackendActivity {
 		        final String name = str[0];
 		        String avail = str[1];
 		        button.setText(name);
+		        button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 		        button.setTextColor(Color.parseColor("#FFFFFF"));		        
 		        button.setBackgroundResource(R.drawable.back);
 		        button.setBackgroundColor(R.drawable.background);

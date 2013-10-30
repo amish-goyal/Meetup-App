@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,7 +63,7 @@ public class ConversationsActivity extends CloudBackendActivity {
 			Scanner scan = new Scanner(is);
 			//accessing relative layout defined in xml
 			RelativeLayout rl = (RelativeLayout) findViewById(R.id.conversationLayout);
-			
+		
 			ImageButton button = (ImageButton) findViewById(R.id.btnAdd);
 			button.setOnClickListener( new OnClickListener() {
 				
@@ -80,6 +81,7 @@ public class ConversationsActivity extends CloudBackendActivity {
 				TextView t = new TextView(this);
 				final String groupName = scan.nextLine();
 				t.setText(groupName);
+				t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 				t.setTextColor(Color.WHITE);
 				t.setBackgroundResource(R.drawable.back);
 				t.setBackgroundColor(R.drawable.button1);

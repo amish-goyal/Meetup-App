@@ -29,7 +29,7 @@ public class ChangeActivity extends Activity {
 		});
 		
 		Button timeBtn = (Button) findViewById(R.id.timeBtn);
-		final String sTime = convertTime(intent);
+		final String sTime = convertTime(intent.getStringExtra("time"));
 		timeBtn.setText(sTime);//change this to the time of the event
 		timeBtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -70,8 +70,8 @@ public class ChangeActivity extends Activity {
 		return true;
 	}
 
-	public static String convertTime(Intent intent) {
-		String[] time = intent.getStringExtra("time").split(":");
+	public static String convertTime(String t) {
+		String[] time = t.split(":");
 		int hour = Integer.parseInt(time[0]);
 		int minute = Integer.parseInt(time[1]);
 		String standardTime = "";

@@ -15,17 +15,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" >
 
-        <TextView
-            android:id="@+id/title"
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:paddingTop="5dp"
-        	android:paddingBottom="5dp"
-        	android:textColor="#FFFFFF"
-        	android:textSize="18sp"
-            android:text="@string/messages" />
+            android:layout_toLeftOf="@+id/btnAdd" />
 
         <ImageButton
             android:id="@+id/btnAdd"
@@ -44,7 +40,7 @@
         android:layout_above="@+id/rlpBtns"
         android:layout_below="@+id/rlpTAdd" >
 
-        <TextView
+        <!-- <TextView
             android:id="@+id/messageHist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,8 +50,8 @@
         	android:paddingBottom="5dp"
         	android:textColor="#FFFFFF"
         	android:textSize="16sp"
-            android:scrollbars="vertical"
-            android:textAlignment="viewEnd" />
+            android:scrollbars="vertical" /> -->
+        
     </RelativeLayout>
 
     <RelativeLayout
@@ -64,38 +60,38 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" >
         
-        <Spinner
-        android:id="@+id/spinner"
+        <EditText
+        android:id="@+id/reason"
         android:layout_height="wrap_content"
         android:layout_width = "200dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:layout_toLeftOf="@+id/btnYes" />
+        android:inputType="textMultiLine"
+        android:text="@string/noReason"
+        android:layout_toRightOf="@+id/btnYes" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnYes"
-            android:layout_width="63dp"
+            android:contentDescription="@string/yes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_toLeftOf="@+id/btnNo"
+            android:layout_alignParentLeft="true"
             android:paddingTop="5dp"
         	android:paddingBottom="5dp"
-        	android:textColor="#FFFFFF"
-        	android:textSize="18sp"
-            android:text="@string/yes" />
+        	android:background="@drawable/green_check_icon" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnNo"
-            android:layout_width="63dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:paddingTop="5dp"
         	android:paddingBottom="5dp"
-        	android:textColor="#FFFFFF"
-        	android:textSize="18sp"
-            android:text="@string/no" />
+        	android:background="@drawable/red_x_icon"
+            android:contentDescription="@string/no" />
     </RelativeLayout>
 
 </RelativeLayout>
