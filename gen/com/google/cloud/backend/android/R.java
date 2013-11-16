@@ -34,7 +34,11 @@ public final class R {
         public static final int yellow_question_mark=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001a;
+        public static final int IV_Status=0x7f08001b;
+        public static final int LV_List=0x7f080010;
+        public static final int TV_Name=0x7f08001a;
+        public static final int TV_Reason=0x7f08001c;
+        public static final int action_settings=0x7f08001d;
         public static final int btnAdd=0x7f08000a;
         public static final int btnNo=0x7f080014;
         public static final int btnYes=0x7f080013;
@@ -55,7 +59,6 @@ public final class R {
         public static final int reason=0x7f080012;
         public static final int rlpBtns=0x7f080011;
         public static final int rlpCAdd=0x7f080008;
-        public static final int rlpMsgHist=0x7f080010;
         public static final int rlpTAdd=0x7f08000e;
         public static final int spinner=0x7f08000f;
         public static final int textTimeGroup=0x7f080016;
@@ -70,6 +73,7 @@ public final class R {
         public static final int activity_main=0x7f030004;
         public static final int activity_message=0x7f030005;
         public static final int activity_time=0x7f030006;
+        public static final int list_template=0x7f030007;
     }
     public static final class menu {
         public static final int change=0x7f070000;

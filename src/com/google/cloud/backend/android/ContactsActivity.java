@@ -132,7 +132,7 @@ public class ContactsActivity extends CloudBackendActivity {
 		}
 
 		newPost.put("status",status);
-		newPost.put("group",group);
+		newPost.put("group",friends);
 		newPost.put("eventID",eventID);
 		newPost.put("eventID2",eventID2);
 		newPost.put("location",location);
